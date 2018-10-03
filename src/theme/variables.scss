@@ -37,9 +37,15 @@ $colors: (
   primary:    #488aff,
   secondary:  #32db64,
   danger:     #f53d3d,
-  light:      #f4f4f4,
   dark:       #222
 );
+
+$toolbar-md-background:  color($colors, dark);
+$tabs-background:  color($colors, dark);
+
+$tab-button-active-color:              color($colors, danger);
+$tab-button-inactive-color:            color($colors, secondary);
+
 
 
 // App iOS Variables
