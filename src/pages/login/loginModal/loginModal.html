@@ -1,0 +1,25 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title>Se Connecter</ion-title>
+        <ion-buttons end>
+            <button ion-button icon-only (click)="closeModal()">
+                <ion-icon name="close"></ion-icon>
+            </button>
+        </ion-buttons>
+    </ion-navbar>
+</ion-header>
+
+<ion-content>
+    <p text-center>
+        Login
+    </p>
+    <ion-input></ion-input>
+    <p text-center>
+        Mot de Passe
+    </p>
+    <ion-input></ion-input>
+    <br>
+    <button col-6 offset-3 ion-button (click)="login()">
+        Connexion
+    </button>
+</ion-content>
