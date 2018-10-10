@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, ToastController } from 'ionic-angular';
+
 
 @Component({
   selector: 'page-contact',
@@ -7,8 +8,16 @@ import { NavController } from 'ionic-angular';
 })
 export class ContactPage {
 
-  constructor(public navCtrl: NavController) {
+  constructor(public navCtrl: NavController, public toastCtrl: ToastController) {
 
+  }
+
+  sendComment() {
+    const toast = this.toastCtrl.create({
+      message: 'Commentaire envoyé',
+      duration: 3000
+    });
+    toast.present();
   }
 
 }
