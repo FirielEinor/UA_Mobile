@@ -1,17 +1,78 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>Home</ion-title>
+    <ion-title>Infos</ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  <h2>Welcome to Ionic!</h2>
-  <p>
-    This starter project comes with simple tabs-based layout for apps
-    that are going to primarily use a Tabbed UI.
-  </p>
-  <p>
-    Take a look at the <code>src/pages/</code> directory to add or change tabs,
-    update any existing page or create new pages.
-  </p>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <img src="assets/imgs/ua2018.png" align="middle">
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-segment [(ngModel)]="infosType">
+        <ion-segment-button value=0>
+          Générale
+        </ion-segment-button>
+        <ion-segment-button value=1>
+          Réseaux
+        </ion-segment-button>
+        <ion-segment-button value=2>
+          Tournois
+        </ion-segment-button>
+      </ion-segment>
+    </ion-row>
+    <ion-row justify-content-center align-items-center>
+      <ion-icon name="alert" 
+                class="iconInfo" 
+                [hidden]="!(infosType == 0)"
+                color="primary">
+      </ion-icon>
+      <ion-list col-12  [hidden]="!(infosType == 0)"> 
+        <ion-item text-center>
+          Info G1
+        </ion-item>
+        <ion-item text-center>
+          Info G2
+        </ion-item>
+        <ion-item text-center>
+          Info G3
+        </ion-item>
+      </ion-list>
+      <ion-icon name="apps" 
+                class="iconInfo" 
+                [hidden]="!(infosType == 1) && !(infosType == 0)"
+                color="primary">
+      </ion-icon>
+      <ion-list col-12 [hidden]="!(infosType == 1) && !(infosType == 0)">
+        <ion-item text-center>
+          Info R1
+        </ion-item>
+        <ion-item text-center>
+          Info R2
+        </ion-item>
+        <ion-item text-center>
+          Info R3
+        </ion-item>
+      </ion-list>
+      <ion-icon name="git-network" 
+                class="iconInfo" 
+                [hidden]="!(infosType == 2) && !(infosType == 0)"
+                color="primary">
+      </ion-icon>
+      <ion-list col-12 [hidden]="!(infosType == 2) && !(infosType == 0)">
+        <ion-item text-center>
+          Info T1
+        </ion-item>
+        <ion-item text-center>
+          Info T2
+        </ion-item>
+        <ion-item text-center>
+          Info T3
+        </ion-item>
+      </ion-list>
+    </ion-row>
+  </ion-grid>
 </ion-content>
