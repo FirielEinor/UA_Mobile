@@ -11,6 +11,9 @@ import { LoginPage } from '../pages/login/login';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { TeamPage } from '../pages/team/team';
+import { LoginModal } from '../pages/login/loginModal/loginModal';
+import { HttpModule } from '@angular/http';
 
 @NgModule({
   declarations: [
@@ -19,10 +22,13 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     ContactPage,
     HomePage,
     TabsPage,
-    LoginPage
+    LoginPage,
+    TeamPage,
+    LoginModal
   ],
   imports: [
     BrowserModule,
+    HttpModule,
     IonicModule.forRoot(MyApp)
   ],
   bootstrap: [IonicApp],
@@ -32,7 +38,9 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     ContactPage,
     HomePage,
     TabsPage,
-    LoginPage
+    LoginPage,
+    TeamPage,
+    LoginModal
   ],
   providers: [
     StatusBar,
