@@ -4,6 +4,7 @@ import { TabsPage } from '../../tabs/tabs';
 import { AuthService } from '../../../services/AuthService';
 import { AuthStorageHelper } from '../../../helpers/AuthStorageHelper';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
+import { LogInfo } from '../../../services/LogInfoService';
 
 @Component({
     selector: 'modal-login',
@@ -18,6 +19,7 @@ export class LoginModal {
         private authService: AuthService,
         private fb: FormBuilder,
         private authStorageHelper: AuthStorageHelper,
+        private logInfo:LogInfo
         ) {
             this.loginForm = this.fb.group({
                 'login': [
@@ -35,15 +37,14 @@ export class LoginModal {
     }
 
     submitLoginForm(data){
-        //this.navCtrl.push(TabsPage)
         this.authService.newcomerLogin(data.login, data.password)
             .subscribe(
                 data => {
                     const parsedData = JSON.parse(data._body);
                     console.log(data._body)
                     console.log(parsedData)
-                    this.authStorageHelper.setAccessToken(parsedData.access_token);
-                    this.authStorageHelper.setRefreshToken(parsedData.refresh_token);
+                    this.logInfo.userInfo = parsedData;
+                    this.authStorageHelper.setAccessToken(parsedData.token);
                     this.navCtrl.push(TabsPage)
                 },
                 err => console.log("err : ", err)
