@@ -1,0 +1,13 @@
+page-team {
+    ion-icon {
+        color: map-get($colors, primary);
+    }
+
+    .memberIcon {
+        font-size: 40px;
+    }
+
+    .isCaptain {
+        color:red;
+    }
+}
