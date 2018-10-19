@@ -102,7 +102,7 @@ export class BaseService {
         if (auth === true) {
             const accessToken = this.authStorageHelper.getAccessToken();
             if (accessToken) {
-                headers.append('Authorization', `Bearer ${accessToken}`);
+                headers.append('X-Token', `${accessToken}`);
             }
         }
 
@@ -145,7 +145,6 @@ export class BaseService {
      * @return Object | Any
      */
     private getRequest(uri: string, options) {
-        console.log("test")
         return this.http.get(uri, options)
             .map(this.extractData)
             .catch(this.handleError)
