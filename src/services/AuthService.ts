@@ -30,37 +30,10 @@ export class AuthService extends BaseService {
         return this._put(this.endpoint + "user/login", data, false);
     }
 
-    /**
-     * Make a request to send the received authorization code to
-     * the API in order to authenticate the user
-     *
-     * @param string authorization_code
-     * @return object
-     */
-    sendAuthorizationCode(authorization_code) {
-        return this._post(this.endpoint + "oauth/etuutt/callback",
-            {
-                authorization_code
-            }, false);
+    getUserWithToken(){
+        return this._get(this.endpoint + "user", {});
     }
 
-    /**
-     * Make a request to refresh the access token, using the refresh token
-     *
-     * @param string refreshToken
-     * @return object
-     */
-    refreshAccessToken(refreshToken) {
-        const data = {
-            grant_type: 'refresh_token',
-            refresh_token: refreshToken,
-            client_id: ENV.CLI_ID,
-            client_secret: ENV.CLI_SECRET,
-            scope: ''
-        }
-
-        return this._post(this.endpoint + "oauth/token", data, false);
-    }
 
     /**
      * Make a request to check if the access token is
