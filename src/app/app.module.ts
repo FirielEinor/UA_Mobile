@@ -14,6 +14,9 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { TeamPage } from '../pages/team/team';
 import { LoginModal } from '../pages/login/loginModal/loginModal';
 import { HttpModule } from '@angular/http';
+import { LogInfo } from '../services/LogInfoService';
+import { TeamService } from '../services/TeamService';
+import { AuthStorageHelper } from '../helpers/AuthStorageHelper';
 
 @NgModule({
   declarations: [
@@ -45,6 +48,9 @@ import { HttpModule } from '@angular/http';
   providers: [
     StatusBar,
     SplashScreen,
+    LogInfo,
+    TeamService,
+    AuthStorageHelper,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
