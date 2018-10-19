@@ -5,7 +5,43 @@
 </ion-header>
 
 <ion-content>
-    <p>
-        Ici la liste de vos coéquipier.
-    </p>
+    <ion-item text-center>
+            <ion-icon name="contact" [ngClass]="{'isCaptain': true}"></ion-icon>
+            Capitaine
+            <ion-icon name="contact"></ion-icon>
+            Membre
+    </ion-item>
+    <ion-segment [(ngModel)]="allTeam">
+        <ion-segment-button value=0>
+            Votre équipe
+        </ion-segment-button>
+        <ion-segment-button value=1>
+            Toutes les équipes
+        </ion-segment-button>
+    </ion-segment>
+    <ion-list>
+        
+        <ion-card [hidden]="!(allTeam == 0)">
+            <ion-card-header text-center>Team {{logTeam.name}}</ion-card-header>
+            <ion-card-content>
+                <ion-item text-center *ngFor="let teammate of logTeam.users">
+                    <ion-icon name="contact" [ngClass]="{'isCaptain': logTeam.captainId === teammate.id, 'memberIcon':true}">
+                        
+                    </ion-icon>
+                    <p>{{teammate.name}}</p>
+                </ion-item>
+            </ion-card-content>
+        </ion-card>
+        <ion-card *ngFor="let team of teams" [hidden]="!(allTeam == 1) || team.id == logTeam.id">
+            <ion-card-header text-center>Team {{team.name}}</ion-card-header>
+            <ion-card-content>
+                <ion-item text-center *ngFor="let teammate of team.users">
+                    <ion-icon name="contact" [ngClass]="{'isCaptain': team.captainId === teammate.id, 'memberIcon':true}">
+                        
+                    </ion-icon>
+                    <p>{{teammate.name}}</p>
+                </ion-item>
+            </ion-card-content>
+        </ion-card>
+    </ion-list>
 </ion-content>
